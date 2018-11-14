@@ -1,20 +1,26 @@
 package studiomarcant.be.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyIOnitializer","handler"})
 @Table(name = "arrangementdata")
-public class ArrangementData {
+public class ArrangementData implements Serializable{
+
+	private static final long serialVersionUID=1L;
 
 	// ATTRIBUTES
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "arrangementDataID")
-	private int arrangementDataID;
+	private Long arrangementDataID;
 
 	@Column(name = "arrangerID")
-	private int arrangerId;
+	private Long arrangerId;
 	@Column(name = "arrangedByName")
 	private String arrangedByName;
 	@Column(name = "arrangedByLastName")
@@ -30,7 +36,7 @@ public class ArrangementData {
 
 	// CONSTRUCTOR
 	
-	public ArrangementData(int arrangementDataID, int arrangerID, int scoreTypeID, String arrangedByName,
+	public ArrangementData(Long arrangementDataID, Long arrangerID, int scoreTypeID, String arrangedByName,
 			String arrangedByLastName, int arrangerYearOfBirth, int arrangerYearOfDeath, String arrangedFor) {
 		this.arrangementDataID = arrangementDataID;
 		this.arrangerId = arrangerID;
@@ -44,11 +50,11 @@ public class ArrangementData {
 
 	// GETTERS
 	
-	public int getArrangementDataID() {
+	public Long getArrangementDataID() {
 		return arrangementDataID;
 	}
 
-	public int getArrangerId() {
+	public Long getArrangerId() {
 		return arrangerId;
 	}
 
@@ -78,11 +84,11 @@ public class ArrangementData {
 
 	// SETTERS
 
-	public void setArrangementDataID(int arrangementDataID) {
+	public void setArrangementDataID(Long arrangementDataID) {
 		this.arrangementDataID = arrangementDataID;
 	}
 
-	public void setArrangerId(int arrangerId) {
+	public void setArrangerId(Long arrangerId) {
 		this.arrangerId = arrangerId;
 	}
 
@@ -119,8 +125,8 @@ public class ArrangementData {
 		result = prime * result + ((arrangedByLastName == null) ? 0 : arrangedByLastName.hashCode());
 		result = prime * result + ((arrangedByName == null) ? 0 : arrangedByName.hashCode());
 		result = prime * result + ((arrangedFor == null) ? 0 : arrangedFor.hashCode());
-		result = prime * result + arrangementDataID;
-		result = prime * result + arrangerId;
+		result = (int) (prime * result + arrangementDataID);
+		result = (int) (prime * result + arrangerId);
 		result = prime * result + arrangerYearOfBirth;
 		result = prime * result + arrangerYearOfDeath;
 		result = prime * result + scoreTypeID;

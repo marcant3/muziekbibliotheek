@@ -1,3 +1,4 @@
+/*
 package studiomarcant.be.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 import studiomarcant.be.model.Composer;
 import studiomarcant.be.services.ComposerService;
 
-@RestController
-@RequestMapping(value = "/")
-public class ComposerController {
+//@RestController
+//@RequestMapping(value = "/")
+//public class  ComposerController {
 
-	@Autowired
-	ComposerService service;
+	//@Autowired
+	*//*ComposerService service;
 
 	@GetMapping(value = "/showall")
 	public Object showAll() {
 		Object foundList = service.findAll();
 		return foundList;
-	}
+	}*//*
 
 	@GetMapping(value = "/ComposerID/{id}")
 	public Composer showById(@PathVariable int id) {
@@ -74,3 +75,4 @@ public class ComposerController {
 	}
 
 }
+*/

@@ -2,18 +2,20 @@ package studiomarcant.be.services;
 
 import studiomarcant.be.model.ArrangementData;
 
+import java.util.List;
+
 public interface ArrangementDataService {
 	
-	public Object findAll();
+	List<ArrangementData> findAll();
 	
-	public ArrangementData find(int id);
+	ArrangementData findById(int id);
 	
-	public  ArrangementData find(String arrangedByName);
+	ArrangementData findByName(String arrangedByName);
 	
-	public ArrangementData createArrangementData(ArrangementData arrangementData);	
+	ArrangementData createArrangementData(ArrangementData arrangementData);
 	
-	public ArrangementData updateArrangementData(ArrangementData arrangementData);
+	ArrangementData updateArrangementData(ArrangementData arrangementData);
 	
-	public ArrangementData deleteArrangementData(ArrangementData arrangementData);
+	ArrangementData deleteArrangementData(ArrangementData arrangementData);
 
 }

@@ -12,20 +12,22 @@ public class ArrangementDataServiceImpl implements ArrangementDataService {
 	@Autowired
 	ArrangementDataDao dao;
 
+	public static List<ArrangementData> arrangements;
+
 	@Override
-	public Object findAll() {
-		Object foundList = dao.findAll();
+	public  List<ArrangementData> findAll() {
+		List<ArrangementData> foundList = dao.findAll();
 		return foundList;
 	}
 
 	@Override
-	public ArrangementData find(int id) {
+	public ArrangementData findById (int id) {
 		ArrangementData found = dao.findOne(id);
 		return found;
 	}
 
 	@Override
-	public ArrangementData find(String arrangedByName) {
+	public ArrangementData findByName (String arrangedByName) {
 		ArrangementData found = null;
 		List<ArrangementData> foundList = (ArrayList<ArrangementData>) dao.findAll();
 		for (ArrangementData arrangementData : foundList) {
@@ -36,6 +38,7 @@ public class ArrangementDataServiceImpl implements ArrangementDataService {
 		return found;
 	}
 
+
 	@Override
 	public ArrangementData createArrangementData(ArrangementData arrangementData) {
 		dao.save(arrangementData);
@@ -44,14 +47,14 @@ public class ArrangementDataServiceImpl implements ArrangementDataService {
 
 	@Override
 	public ArrangementData updateArrangementData(ArrangementData arrangementData) {
-		ArrangementData found = dao.findOne(arrangementData.getArrangementDataID());
+		ArrangementData found = dao.findOne(Math.toIntExact (arrangementData.getArrangementDataID ()));
 		dao.save(arrangementData);
 		return found;
 	}
 
 	@Override
 	public ArrangementData deleteArrangementData(ArrangementData arrangementData) {
-		ArrangementData found = dao.findOne(arrangementData.getArrangementDataID());
+		ArrangementData found = dao.findOne(Math.toIntExact (arrangementData.getArrangementDataID ()));
 		dao.delete(found);
 		return found;
 	}
